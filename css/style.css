@@ -15,6 +15,10 @@ form {
   border-radius: 10px;
 }
 
+.form-check-input:focus {
+  box-shadow: none;
+}
+
 form.post {
   background-color: transparent;
   border: none;
