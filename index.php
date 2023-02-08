@@ -1,3 +1,28 @@
+<?php
+$password_length = $_GET['password-length'] ?? '';
+$words = 'abcdefghijklmnopqrstuvwxyz';
+$up_words = strtoupper($words);
+$numbers = '0123456789';
+$symbols = '!?.-+/';
+
+$total_char = $words . $up_words . $numbers . $symbols;
+
+function get_random_word($string, $length)
+{
+  $random_word = '';
+  $max_value = strlen($string);
+  do {
+    $index = rand(0, $max_value);
+    $random_word .= substr($string, $index, 1);
+  } while (strlen($random_word) < $length);
+  return $random_word;
+}
+
+if ($password_length)
+  $password = get_random_word($total_char, $password_length);
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -23,13 +48,20 @@
       <form action="">
         <div class="d-flex justify-content-between align-items-center">
           <label for="password-length" class="form-label">Lunghezza password:</label>
-          <input type="number" name="password-length" id="password-length" class="form-control w-25">
+          <input type="number" name="password-length" id="password-length" class="form-control w-25" min="1"
+            value="<?= $password_length ?>">
         </div>
         <div class="mt-3">
           <button class="btn btn-primary ">Invia</button>
           <a href="index.php" class="btn btn-secondary">Annulla</a>
         </div>
       </form>
+      <?php if (isset($password)): ?>
+        <div class="alert alert-success mt-3" role="alert">
+          <h6>La password generata è:</h6>
+          <?= $password ?>
+        <?php endif ?>
+      </div>
     </main>
   </div>
 </body>
