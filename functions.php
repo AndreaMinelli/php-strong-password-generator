@@ -1,10 +1,6 @@
 <?php
-
 $password_length = $_GET['password-length'] ?? '';
-$words = 'abcdefghijklmnopqrstuvwxyz';
 $up_words = strtoupper($words);
-$numbers = '0123456789';
-$symbols = '!?.-+/';
 $total_char = $words . $up_words . $numbers
     . $symbols;
 
