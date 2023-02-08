@@ -17,5 +17,10 @@ function get_random_word($string, $length)
     } while (strlen($random_word) < $length);
     return $random_word;
 }
-if ($password_length)
+if ($password_length) {
+    session_start();
     $password = get_random_word($total_char, $password_length);
+    $_SESSION['password'] = $password;
+    header('Location: password_page.php');
+
+}

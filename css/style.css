@@ -14,3 +14,9 @@ form {
   border: 1px solid lightgray;
   border-radius: 10px;
 }
+
+form.post {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
